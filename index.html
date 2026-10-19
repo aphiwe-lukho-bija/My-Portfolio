@@ -2,23 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Portfolio of Aphiwe Lukho Bija — aspiring software development intern."
+      content="Portfolio of Aphiwe Lukho Bija, a software development intern based in Cape Town."
     />
-    <title>Aphiwe Lukho Bija — Portfolio</title>
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0807" />
+    <title>Aphiwe Lukho Bija — Software development portfolio</title>
 
-    <!-- set the theme before the first paint so there is no flash of the
-         wrong colours. SiteNav.vue keeps this value in sync afterwards. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap"
+    />
+
+    <!-- marks the page as script-enabled before first paint, so the arrival
+         animation can start hidden without a flash. Without script, everything
+         simply shows. -->
     <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      document.documentElement.classList.add('js')
     </script>
   </head>
   <body>
     <div id="app"></div>
+    <noscript>
+      <p style="padding:2rem;color:#efe6d3;background:#0a0807">
+        This portfolio needs JavaScript. Contact: aphiwelukhobija@gmail.com
+      </p>
+    </noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
