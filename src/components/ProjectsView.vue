@@ -53,7 +53,7 @@ const visible = projects.filter((p) => SHOW_PLACEHOLDERS || !p.placeholder)
             </div>
 
             <div class="spec-block">
-              <h4>Technical decisions</h4>
+              <h4>Decisions and takeaways</h4>
               <ul class="decisions">
                 <li v-for="d in project.decisions" :key="d">{{ d }}</li>
               </ul>

@@ -70,6 +70,29 @@ export const goals = {
 /* ------------------------------------------------------------------ */
 export const projects = [
   {
+    id: 'applydirect',
+    title: 'ApplyDirect SA',
+    kind: 'Team project · Full-stack web application',
+    purpose:
+      'A full-stack web application that helps students access and manage university-related opportunities through one platform.',
+    problem:
+      'Students need one place to reach and manage university-related opportunities, and the application has to work as a whole: the screens, the routing and the backend all need to connect.',
+    contribution:
+      'Developed the Login page: a simple, user-friendly interface for students to access their accounts, properly connected to the rest of the application and to our backend authentication.',
+    technologies: ['Vue.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Git', 'GitHub'],
+    decisions: [
+      'Kept the login interface simple and user-friendly, so students can reach their accounts without friction.',
+      'Connected the page through routing and to the backend authentication, so it worked as part of the whole application and not on its own.',
+      'Worked in separate Git branches and merged our individual contributions into one application, resolving issues together as a team.',
+      'Biggest lesson: building a full-stack application is not only writing code. Communication, teamwork, problem-solving and testing that the different parts work together matter just as much.'
+    ],
+    links: [
+      { label: 'Source code on GitHub', href: 'https://lnkd.in/dmAQDEpE' },
+      { label: 'Figma design', href: 'https://lnkd.in/dZmnXZJU' },
+      { label: 'Live site', href: 'https://lnkd.in/d25a67Df' }
+    ]
+  },
+  {
     id: 'portfolio',
     title: 'This portfolio',
     kind: 'Personal website',
@@ -91,20 +114,6 @@ export const projects = [
       { label: 'Repository', placeholder: true, note: 'Add the repository link' },
       { label: 'Live site', placeholder: true, note: 'Add the live site link once it is published' }
     ]
-  },
-  {
-    id: 'next',
-    placeholder: true,
-    title: 'Your next case study',
-    kind: 'To add',
-    purpose: 'What the project is for, and who it is for.',
-    problem: 'The problem it solves.',
-    contribution: 'What you personally built or decided.',
-    technologies: [],
-    decisions: ['One or two technical decisions and the reason behind them.'],
-    links: [{ label: 'Source / live links', placeholder: true, note: 'Add links' }],
-    prompt:
-      'Add a project from your YouthCode programme or your internship here. Fill in the fields above in src/data/portfolio.js and this slot becomes a full case study.'
   }
 ]
 
@@ -113,15 +122,17 @@ export const projects = [
 /* ------------------------------------------------------------------ */
 export const skills = [
   {
-    heading: 'Used to build this site',
-    note: 'Technologies in the project above.',
+    heading: 'Used in my projects',
+    note: 'ApplyDirect SA and this portfolio.',
     items: [
-      { name: 'Vue 3', where: 'Components, reactivity, lazy-loaded features' },
+      { name: 'Vue.js', where: 'ApplyDirect SA login page and routing; this portfolio' },
       { name: 'JavaScript', where: 'Interaction, the chess engine and its AI' },
       { name: 'CSS', where: 'Fluid layout, responsive design, motion' },
-      { name: 'WebGL and GLSL', where: 'The animated background shader' },
-      { name: 'Three.js', where: 'The 3D chess scene' },
-      { name: 'Vite', where: 'Build tooling and code splitting' }
+      { name: 'REST APIs', where: 'Connecting the login page to backend authentication' },
+      { name: 'Node.js and Express.js', where: 'The ApplyDirect SA team backend' },
+      { name: 'MySQL', where: 'The ApplyDirect SA team database' },
+      { name: 'Git and GitHub', where: 'Branches, merging and team collaboration' },
+      { name: 'WebGL, GLSL and Three.js', where: 'This portfolio’s background and 3D chess scene' }
     ]
   },
   {
@@ -133,14 +144,14 @@ export const skills = [
       { name: 'E-commerce', where: 'YouthCode Software Development Project' },
       { name: 'Introduction to ICT', where: 'YouthCode Software Development Project' },
       { name: 'Cybersecurity fundamentals', where: 'Introduction to Cybersecurity certificate' },
-      { name: 'Data science fundamentals', where: 'Introduction to Data Science certificate' },
-      { name: 'Languages and tools used on the course', placeholder: true, where: 'Add the ones you used' }
+      { name: 'Data science fundamentals', where: 'Introduction to Data Science certificate' }
     ]
   },
   {
     heading: 'Working with people',
-    note: 'Skills from work and training.',
+    note: 'Skills from work, training and team projects.',
     items: [
+      { name: 'Teamwork', where: 'ApplyDirect SA: shared branches, issues and merging' },
       { name: 'Communication', where: 'Explaining technical ideas clearly' },
       { name: 'Public speaking', where: 'GBVF Ambassador training' },
       { name: 'Leadership and advocacy', where: 'GBVF Ambassador, NICDAM' },

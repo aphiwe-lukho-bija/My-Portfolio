@@ -29,9 +29,7 @@ Anything not yet filled in shows a dashed brass **Placeholder** tag. They are al
 `src/data/portfolio.js` (search for `placeholder`):
 
 - the repository and live-site links of the portfolio case study
-- a second project case study slot
 - the company name of the current internship
-- the languages and tools used on the YouthCode course
 
 Set `SHOW_PLACEHOLDERS = false` at the top of that file to hide them all. Nothing on the site
 is invented: every entry comes from the original site or CV details.
