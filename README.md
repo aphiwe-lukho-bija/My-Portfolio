@@ -28,7 +28,7 @@ npm run build    # production build into dist/
 Anything not yet filled in shows a dashed brass **Placeholder** tag. They are all in
 `src/data/portfolio.js` (search for `placeholder`):
 
-- the repository and live-site links of the portfolio case study
+- the live-site link of the portfolio case study
 - the company name of the current internship
 
 Set `SHOW_PLACEHOLDERS = false` at the top of that file to hide them all. Nothing on the site

@@ -111,7 +111,7 @@ export const projects = [
     ],
     links: [
       { label: 'GitHub profile', href: person.github },
-      { label: 'Repository', placeholder: true, note: 'Add the repository link' },
+      { label: 'Repository on GitHub', href: 'https://github.com/aphiwe-lukho-bija/My-Portfolio.git' },
       { label: 'Live site', placeholder: true, note: 'Add the live site link once it is published' }
     ]
   }
