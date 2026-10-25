@@ -414,10 +414,20 @@ function setup () {
   if (props.reducedMotion) {
     requestStaticFrame()
   } else {
-    // the arrival: one ribbon, shortly after the page appears
-    introTimer = setTimeout(() => { strikeA = { start: nowSec(), dur: 3.6 } }, 450)
+    // the arrival: one ribbon, shortly after the page appears. When the intro
+    // film is playing, it waits for the film to hand over to the page.
+    if (document.documentElement.classList.contains('intro-active')) {
+      window.addEventListener('portfolio:intro-reveal', fireArrival, { once: true })
+    } else {
+      fireArrival()
+    }
     start()
   }
+}
+
+function fireArrival () {
+  clearTimeout(introTimer)
+  introTimer = setTimeout(() => { strikeA = { start: nowSec(), dur: 3.6 } }, 450)
 }
 
 onMounted(() => {
@@ -436,6 +446,7 @@ onBeforeUnmount(() => {
   stop()
   clearTimeout(resizeTimer)
   clearTimeout(introTimer)
+  window.removeEventListener('portfolio:intro-reveal', fireArrival)
   const cv = canvas.value
   cv && cv.removeEventListener('webglcontextlost', onContextLost)
   cv && cv.removeEventListener('webglcontextrestored', onContextRestored)

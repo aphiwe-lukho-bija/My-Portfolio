@@ -149,6 +149,37 @@ main:focus {
   z-index: 1;
 }
 
+/* ====== INTRO HAND-OVER ======
+   While the opening film plays the page waits underneath, a little lower and
+   transparent. When the hold lifts, it rises into place slowly. Only <main>
+   moves (a transform on the shell itself would trap the fixed top bar). */
+html.intro-active {
+  overflow: hidden;
+}
+
+.app-shell {
+  transition: opacity 2.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s;
+}
+
+.app-shell > main {
+  transition: transform 3.2s var(--ease) 0.1s;
+}
+
+/* after a skip the hand-over is quick */
+html.intro-quick .app-shell,
+html.intro-quick .app-shell > main {
+  transition-duration: 0.9s;
+  transition-delay: 0s;
+}
+
+.app-shell.intro-hold {
+  opacity: 0;
+}
+
+.app-shell.intro-hold > main {
+  transform: translateY(3.5rem);
+}
+
 .wrap {
   width: min(100% - 2 * var(--gutter), var(--maxw));
   margin-inline: auto;
@@ -486,6 +517,7 @@ main:focus {
 }
 
 .chess-link,
+.intro-link,
 .chess-cta {
   display: inline-flex;
   align-items: center;
@@ -495,19 +527,22 @@ main:focus {
   transition: color 0.3s, border-color 0.3s, background 0.3s;
 }
 
-.chess-link {
+.chess-link,
+.intro-link {
   padding: 0.6rem 1.05rem;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: rgba(14, 11, 9, 0.5);
 }
 
-.chess-link:hover {
+.chess-link:hover,
+.intro-link:hover {
   border-color: var(--brass-2);
   background: rgba(40, 29, 18, 0.7);
 }
 
 .chess-link svg,
+.intro-link svg,
 .chess-cta svg {
   color: var(--brass-2);
 }
@@ -1343,11 +1378,13 @@ textarea {
 }
 
 @media (max-width: 480px) {
-  .chess-link span {
+  .chess-link span,
+  .intro-link span {
     display: none;
   }
 
-  .chess-link {
+  .chess-link,
+  .intro-link {
     padding: 0.7rem;
   }
 }

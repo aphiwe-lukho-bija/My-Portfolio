@@ -46,3 +46,22 @@ is invented: every entry comes from the original site or CV details.
 - **Fonts:** Newsreader and Hanken Grotesk load from Google Fonts (`index.html`). To self-host
   them, install `@fontsource-variable/hanken-grotesk` and `@fontsource-variable/newsreader`.
 - **Theme:** the old light/dark toggle was removed; the cinematic background is dark by design.
+
+## Opening film (intro)
+
+A silent full-screen film plays first; near its end the portfolio rises underneath while the film
+dissolves. A "Skip intro" button (or Esc) skips it at any time.
+
+| What | File |
+| --- | --- |
+| The film layer, skip button, hand-over timing | `src/components/IntroSplash.vue` |
+| Wiring (once per session, reduced motion) | `src/App.vue` |
+| Page rise / fade while the film hands over | `src/style.css` ("INTRO HAND-OVER") |
+| The film file (you add it) | `public/intro/intro.mp4` |
+| Blender script that builds and renders the film | `blender/make_intro.py` |
+
+- Plays once per browser session. `?intro` in the address replays it, `?nointro` skips it.
+- Visitors with "reduce motion" never see it. If the file is missing, fails to load or autoplay is
+  blocked, the site just appears.
+- Timing lives at the top of `IntroSplash.vue` (`REVEAL_LEAD` = seconds before the end that the page
+  starts to rise).

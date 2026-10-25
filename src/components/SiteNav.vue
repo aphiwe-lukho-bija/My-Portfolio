@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { person } from '../data/portfolio.js'
 
-const emit = defineEmits(['open-chess'])
+const emit = defineEmits(['open-chess', 'replay-intro'])
 
 const links = [
   { id: 'about', label: 'About' },
@@ -101,6 +101,21 @@ onUnmounted(() => {
             <rect x="9" y="9" width="6" height="6" fill="currentColor" opacity="0.95" />
           </svg>
           <span>The Next Move</span>
+        </button>
+
+        <!-- the opening film, always one click away -->
+        <button
+          class="intro-link"
+          type="button"
+          aria-label="Watch the opening film"
+          title="Watch the opening film"
+          @click="emit('replay-intro')"
+        >
+          <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.4" fill="none" stroke="currentColor" opacity="0.45" />
+            <path d="M6.6 5.1 11 8l-4.4 2.9V5.1z" fill="currentColor" />
+          </svg>
+          <span>Intro</span>
         </button>
 
         <button
