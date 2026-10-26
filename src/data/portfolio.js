@@ -92,8 +92,52 @@ export const projects = [
     ],
     links: [
       { label: 'Source code on GitHub', href: 'https://lnkd.in/dmAQDEpE' },
-      { label: 'Figma design', href: 'https://lnkd.in/dZmnXZJU' },
-      { label: 'Live site', href: 'https://lnkd.in/d25a67Df' }
+      { label: 'Figma design', href: 'https://lnkd.in/dZmnXZJU' }
+    ]
+  },
+  {
+    id: 'scraping-dashboard',
+    title: 'Web Scraping Analytics Dashboard',
+    kind: 'Agile capstone · Full-stack data dashboard',
+    purpose:
+      'A full-stack analytics dashboard that turns data scraped from multiple websites into a clean, searchable and exportable view.',
+    problem:
+      'In a two-week Agile capstone, the challenge was to collect and clean inconsistent data from different websites, then present it in a responsive dashboard without the layout or 3D elements slowing it down.',
+    contribution:
+      'Worked in an Agile Scrum team to build the Flask RESTful API, the BeautifulSoup scraping and data-cleaning engine, and the responsive Vue.js dashboard with search, filtering and export options. Also helped integrate the interactive Three.js globe without sacrificing performance.',
+    technologies: ['Python', 'Flask', 'BeautifulSoup', 'Vue.js', 'REST APIs', 'Three.js', 'Git', 'GitHub'],
+    decisions: [
+      'Wrote site-specific scraping functions so each source could adapt to its own HTML structure, making the scraper more reliable and easier to maintain.',
+      'Tracked down CSS conflicts that were overwriting graph styles after merging, then refactored the CSS so the same problem would not return.',
+      'Integrated the interactive Three.js globe into the existing dashboard layout while keeping the page responsive and performant.',
+      'Worked in an Agile Scrum team using feature branches and code reviews, which kept the two-week delivery on track.'
+    ],
+    links: [
+      { label: 'Source code on GitHub', href: 'https://lnkd.in/dJXSvibM' },
+      { label: 'Live demo', href: 'https://lnkd.in/dkEM9zCv' }
+    ]
+  },
+  {
+    id: 'hr-management',
+    title: 'Modern Tech Solutions HR Management System',
+    kind: 'Team project · Front-end HR dashboard',
+    purpose:
+      'A standalone HR management system with a futuristic, cyberpunk-inspired interface for managing employee records in the browser.',
+    problem:
+      'The team wanted a complete HRMS experience — create, read, update and delete records — using only front-end technologies, while keeping the interface responsive and the code modular enough for several people to work on at once.',
+    contribution:
+      'Worked with the team on a Vue.js HRMS dashboard with full CRUD operations, dynamic data rendering and Local Storage persistence, and helped carry the cyberpunk-inspired interface from Figma into a responsive front end.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'Local Storage', 'Figma', 'Git', 'GitHub'],
+    decisions: [
+      'Built the interface with Vue.js components and a modular structure, so features could be developed and maintained independently.',
+      'Implemented CRUD operations with dynamic data rendering and Local Storage, so records persisted between visits without a backend.',
+      'Resolved merge conflicts by communicating across the team, which kept the shared codebase stable and the project on schedule.',
+      'Carried the cyberpunk-inspired visual direction from Figma into a responsive front end.'
+    ],
+    links: [
+      { label: 'Live site', href: 'https://lnkd.in/d47ZhrU9' },
+      { label: 'Source code on GitHub', href: 'https://lnkd.in/dCU_fKih' },
+      { label: 'Figma design', href: 'https://lnkd.in/dZywniak' }
     ]
   },
   {
@@ -116,7 +160,7 @@ export const projects = [
     links: [
       { label: 'GitHub profile', href: person.github },
       { label: 'Repository on GitHub', href: 'https://github.com/aphiwe-lukho-bija/My-Portfolio.git' },
-      { label: 'Live site', placeholder: true, note: 'Add the live site link once it is published' }
+      { label: 'Live site', href: 'https://my-portfolio-5vb3.onrender.com' }
     ]
   }
 ]
@@ -171,9 +215,7 @@ export const experience = [
   {
     period: 'Present',
     role: 'Software development intern',
-    org: '',
-    placeholder: true,
-    orgNote: 'Add the company name',
+    org: 'Life Choices Academy',
     text: 'Building practical experience through real-world coding projects.'
   },
   {
