@@ -14,6 +14,10 @@ import runningImg from '../../pictures/running.jpg'
 import speakingImg from '../../pictures/public-speaking.jpg'
 import cyberPdf from '../../pictures/Introduction_to_Cybersecurity_certificate_aphiwelukhobija-gmail-com_a4805615-39f0-4a56-b456-e5fd8893cecb.pdf'
 import dataPdf from '../../pictures/Introduction_to_Data_Science_certificate_aphiwelukhobija-gmail-com_8091f3fc-f7a0-4392-b7b9-2f954c3c66fd.pdf'
+import softwareDevPdf from '../../pictures/software_development_certificate.pdf'
+import digitalPdf from '../../pictures/digital_certificate.pdf'
+import entrepreneurshipPdf from '../../pictures/entrepreneurship_certificate.pdf'
+import workReadinessPdf from '../../pictures/work_readiness_certificate.pdf'
 
 export const SHOW_PLACEHOLDERS = true
 
@@ -202,6 +206,26 @@ export const education = [
 ]
 
 export const certificates = [
+  {
+    title: 'YouthCode Software Development',
+    text: 'Certificate of achievement for the YouthCode Software Development Project with Life Choices Academy, covering front-end, back-end, databases, e-commerce and professional development.',
+    pdf: softwareDevPdf
+  },
+  {
+    title: 'Work Readiness',
+    text: 'Workplace readiness training covering communication, teamwork, time management, problem solving, professionalism, customer service and CV preparation.',
+    pdf: workReadinessPdf
+  },
+  {
+    title: 'Entrepreneurship',
+    text: 'An introduction to entrepreneurship: identifying opportunities, understanding your industry, innovation, pricing, marketing, planning and managing money.',
+    pdf: entrepreneurshipPdf
+  },
+  {
+    title: 'Digital Learning: AI Explorer and AI Pathfinder',
+    text: 'A practical foundation in artificial intelligence through the AI Explorer and AI Pathfinder modules.',
+    pdf: digitalPdf
+  },
   {
     title: 'Introduction to Cybersecurity',
     text: 'Foundations of online safety, threat awareness and secure behaviour, completed as part of my continuous professional development.',
