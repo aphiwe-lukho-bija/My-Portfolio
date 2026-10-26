@@ -34,6 +34,18 @@ Anything not yet filled in shows a dashed brass **Placeholder** tag. They are al
 Set `SHOW_PLACEHOLDERS = false` at the top of that file to hide them all. Nothing on the site
 is invented: every entry comes from the original site or CV details.
 
+## Contact form
+
+Messages are delivered to `person.email` through Web3Forms, so they arrive in the inbox without
+opening the visitor's mail app.
+
+1. Get a free access key at [web3forms.com](https://web3forms.com) using the portfolio email.
+2. Copy `.env.example` to `.env.local` and paste the key into `VITE_WEB3FORMS_ACCESS_KEY`.
+3. Restart the dev server (or rebuild) so Vite picks up the new variable.
+
+`.env.local` is gitignored, so the key is never committed. If no key is set, or the request
+fails, the form falls back to a `mailto:` link so a message is never lost.
+
 ## Design notes
 
 - **Background:** one fragment shader in plain WebGL (no 3D library). It renders at reduced

@@ -1,24 +1,97 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { contact, person } from '../data/portfolio.js'
+
+const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
 const name = ref('')
 const email = ref('')
 const message = ref('')
-const sent = ref(false)
+const honeypot = ref('')
 
-// there is no backend, so the form opens the visitor's email app with the
-// message already written
-function sendMessage() {
-  const subject = encodeURIComponent(`Portfolio message from ${name.value}`)
-  const body = encodeURIComponent(`${message.value}\n\n— ${name.value} (${email.value})`)
+const status = ref('idle')
+const feedback = ref('')
 
-  window.location.href = `mailto:${person.email}?subject=${subject}&body=${body}`
+const isSending = computed(() => status.value === 'sending')
+const isConfigured = computed(() => Boolean(accessKey))
 
-  sent.value = true
+function mailtoHref() {
+  const subject = encodeURIComponent(`Portfolio message from ${name.value.trim() || 'a visitor'}`)
+  const body = encodeURIComponent(
+    `${message.value.trim()}\n\n— ${name.value.trim() || 'A visitor'} (${email.value.trim()})`
+  )
+  return `mailto:${person.email}?subject=${subject}&body=${body}`
+}
+
+function resetForm() {
   name.value = ''
   email.value = ''
   message.value = ''
+  honeypot.value = ''
+}
+
+async function sendMessage() {
+  if (isSending.value) return
+
+  const trimmedName = name.value.trim()
+  const trimmedEmail = email.value.trim()
+  const trimmedMessage = message.value.trim()
+
+  // A filled honeypot means a bot; pretend it worked and send nothing.
+  if (honeypot.value) {
+    status.value = 'success'
+    feedback.value = 'Thank you. Your message has been sent.'
+    resetForm()
+    return
+  }
+
+  // Without a Web3Forms key the site still works: hand the message to the
+  // visitor's email app so it is never lost.
+  if (!isConfigured.value) {
+    window.location.href = mailtoHref()
+    status.value = 'success'
+    feedback.value = 'Your email app should open with the message ready to send.'
+    resetForm()
+    return
+  }
+
+  status.value = 'sending'
+  feedback.value = ''
+
+  try {
+    // FormData keeps this a simple request, so the browser does not send a
+    // CORS preflight that Web3Forms rejects.
+    const payload = new FormData()
+    payload.append('access_key', accessKey)
+    payload.append('subject', `Portfolio message from ${trimmedName}`)
+    payload.append('from_name', trimmedName)
+    payload.append('name', trimmedName)
+    payload.append('email', trimmedEmail)
+    payload.append('replyto', trimmedEmail)
+    payload.append('message', trimmedMessage)
+
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: payload
+    })
+
+    const result = await response.json().catch(() => ({}))
+
+    if (!response.ok || result.success === false) {
+      throw new Error(result.message || 'The message could not be sent.')
+    }
+
+    status.value = 'success'
+    feedback.value = 'Thank you. Your message has been sent — I will get back to you soon.'
+    resetForm()
+  } catch (error) {
+    status.value = 'error'
+    feedback.value =
+      error instanceof Error && error.message
+        ? `${error.message} You can also email me directly at ${person.email}.`
+        : `Something went wrong. Please email me directly at ${person.email}.`
+  }
 }
 </script>
 
@@ -119,23 +192,57 @@ function sendMessage() {
       <form class="surface contact-form" @submit.prevent="sendMessage">
         <label>
           Name
-          <input v-model="name" type="text" autocomplete="name" placeholder="Your name" required />
+          <input
+            v-model="name"
+            type="text"
+            autocomplete="name"
+            placeholder="Your name"
+            maxlength="80"
+            required
+          />
         </label>
 
         <label>
           Email
-          <input v-model="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          <input
+            v-model="email"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            maxlength="160"
+            required
+          />
         </label>
 
         <label>
           Message
-          <textarea v-model="message" placeholder="Tell me what you're working on..." required></textarea>
+          <textarea
+            v-model="message"
+            placeholder="Tell me what you're working on..."
+            maxlength="4000"
+            required
+          ></textarea>
         </label>
 
-        <button class="btn btn-primary" type="submit">Send message</button>
+        <div class="hp-field" aria-hidden="true">
+          <label>
+            Leave this field empty
+            <input v-model="honeypot" type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
 
-        <p v-if="sent" class="success" role="status">
-          Your email app should open with the message ready to send.
+        <button class="btn btn-primary" type="submit" :disabled="isSending">
+          {{ isSending ? 'Sending…' : 'Send message' }}
+        </button>
+
+        <p
+          v-if="feedback"
+          class="form-feedback"
+          :class="status === 'error' ? 'error' : 'success'"
+          role="status"
+          aria-live="polite"
+        >
+          {{ feedback }}
         </p>
       </form>
     </div>

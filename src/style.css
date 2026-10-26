@@ -1239,8 +1239,32 @@ textarea {
   justify-self: start;
 }
 
+.contact-form .btn:disabled {
+  cursor: progress;
+  opacity: 0.65;
+  transform: none;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .success {
   color: #9fd2a8;
+  font-size: 0.92rem;
+}
+
+.form-feedback {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.form-feedback.error {
+  color: #e6a6a0;
   font-size: 0.92rem;
 }
 
