@@ -18,6 +18,10 @@ import softwareDevPdf from '../../pictures/software_development_certificate.pdf'
 import digitalPdf from '../../pictures/digital_certificate.pdf'
 import entrepreneurshipPdf from '../../pictures/entrepreneurship_certificate.pdf'
 import workReadinessPdf from '../../pictures/work_readiness_certificate.pdf'
+import scrumPdf from '../../pictures/ScrumFundamentalsCertified-AphiweLukhoBija-1205587-20261104.pdf'
+import reactWebsitePdf from '../../pictures/Coursera _ Online Courses & Credentials From Top Educators.pdf'
+import advancedReactPdf from '../../pictures/Coursera _ Online Courses & Credentials From Top Educators (1).pdf'
+import firebasePdf from '../../pictures/Coursera _ Online Courses & Credentials From Top Educators (2).pdf'
 
 export const SHOW_PLACEHOLDERS = true
 
@@ -171,7 +175,7 @@ export const projects = [
 export const skills = [
   {
     heading: 'Used in my projects',
-    note: 'ApplyDirect SA and this portfolio.',
+    note: 'ApplyDirect SA, this portfolio and certified projects.',
     items: [
       { name: 'Vue.js', where: 'ApplyDirect SA login page and routing; this portfolio' },
       { name: 'JavaScript', where: 'Interaction, the chess engine and its AI' },
@@ -180,7 +184,10 @@ export const skills = [
       { name: 'Node.js and Express.js', where: 'The ApplyDirect SA team backend' },
       { name: 'MySQL', where: 'The ApplyDirect SA team database' },
       { name: 'Git and GitHub', where: 'Branches, merging and team collaboration' },
-      { name: 'WebGL, GLSL and Three.js', where: 'This portfolio’s background and 3D chess scene' }
+      { name: 'WebGL, GLSL and Three.js', where: 'This portfolio’s background and 3D chess scene' },
+      { name: 'React', where: 'Build Your First React Website and Advanced React projects' },
+      { name: 'Testing React applications', where: 'Advanced React: Testing and Firebase Projects' },
+      { name: 'Firebase', where: 'Firebase-backed projects from Advanced React and Learn Firebase' }
     ]
   },
   {
@@ -192,7 +199,11 @@ export const skills = [
       { name: 'E-commerce', where: 'YouthCode Software Development Project' },
       { name: 'Introduction to ICT', where: 'YouthCode Software Development Project' },
       { name: 'Cybersecurity fundamentals', where: 'Introduction to Cybersecurity certificate' },
-      { name: 'Data science fundamentals', where: 'Introduction to Data Science certificate' }
+      { name: 'Data science fundamentals', where: 'Introduction to Data Science certificate' },
+      { name: 'React', where: 'Build Your First React Website and Advanced React certificates' },
+      { name: 'Testing React applications', where: 'Advanced React: Testing and Firebase Projects certificate' },
+      { name: 'Firebase', where: 'Learn Firebase and Advanced React certificates' },
+      { name: 'Scrum fundamentals', where: 'Scrum Fundamentals Certified' }
     ]
   },
   {
@@ -277,6 +288,26 @@ export const certificates = [
     title: 'Introduction to Data Science',
     text: 'Core data science concepts: data handling, analysis and the role of data in decision-making. It supports my path toward Data Engineering.',
     pdf: dataPdf
+  },
+  {
+    title: 'Scrum Fundamentals Certified',
+    text: 'Fundamentals of Scrum: roles, events, artefacts and iterative delivery.',
+    pdf: scrumPdf
+  },
+  {
+    title: 'Build Your First React Website',
+    text: 'A Coursera project introducing React website development.',
+    pdf: reactWebsitePdf
+  },
+  {
+    title: 'Advanced React: Testing and Firebase Projects',
+    text: 'An online course from Packt on testing React applications and building Firebase-backed projects, completed through Coursera.',
+    pdf: advancedReactPdf
+  },
+  {
+    title: 'Learn Firebase',
+    text: 'An online course from Scrimba covering Firebase, completed through Coursera.',
+    pdf: firebasePdf
   }
 ]
 
